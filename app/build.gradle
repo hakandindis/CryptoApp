@@ -9,6 +9,7 @@ plugins {
 
 android {
     namespace 'org.hakandindis.cryptoapp'
+    flavorDimensions 'crypto'
     compileSdk 33
 
     defaultConfig {
@@ -22,8 +23,15 @@ android {
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled true
+            shrinkResources true
+        }
         release {
-            minifyEnabled false
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -33,6 +41,20 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+    productFlavors {
+        development {
+            dimension 'crypto'
+            versionNameSuffix '-development'
+        }
+        store {
+            dimension 'crypto'
+            versionNameSuffix '-store'
+        }
     }
 }
 
@@ -54,11 +76,11 @@ dependencies {
     // hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
-    // lifecycle dependencies
+    // lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.activity:activity-ktx:$activity_version"
-    // jetpack navigation component dependencies
+    // jetpack navigation component
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     // retrofit
