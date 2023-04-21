@@ -11,7 +11,7 @@ buildscript {
         paging_version = "3.1.1"
         glide_version = '4.15.1'
         toastic_version = "1.0.1"
-        activity_version = "1.7.0"
+        activity_version = "1.7.1"
         lottieVersion = "6.0.0"
     }
 }
