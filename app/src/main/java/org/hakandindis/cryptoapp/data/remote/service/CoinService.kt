@@ -12,5 +12,6 @@ interface CoinService {
     @GET("/v1/cryptocurrency/listings/latest")
     suspend fun getLatestCoins(
         @Header("X-CMC_PRO_API_KEY") apiKey: String,
-        @Query("limit") limit: String)
+        @Query("limit") limit: String
+    )
 }
