@@ -27,8 +27,8 @@ android {
     buildTypes {
         debug {
             debuggable true
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
         }
         release {
             debuggable false
@@ -72,7 +72,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // splash screen
-    implementation 'androidx.core:core-splashscreen:1.0.0'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
     // coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
@@ -106,6 +106,8 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$paging_version"
     // glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
+    // Coil
+    implementation "io.coil-kt:coil:2.2.2"
     // toast
     implementation "com.github.yagmurerdogan:Toastic:$toastic_version"
 }
