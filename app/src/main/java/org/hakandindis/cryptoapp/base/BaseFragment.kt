@@ -14,6 +14,8 @@ abstract class BaseFragment<VB : ViewBinding>(
     private var _binding: VB? = null
     protected val binding: VB get() = _binding as VB
 
+
+    protected abstract fun initializeViews()
     protected abstract fun initializeListeners()
     protected abstract fun initializeObservers()
 
@@ -28,12 +30,6 @@ abstract class BaseFragment<VB : ViewBinding>(
             throw IllegalArgumentException("binding is null")
         }
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initializeListeners()
-        initializeObservers()
     }
 
     override fun onDestroyView() {

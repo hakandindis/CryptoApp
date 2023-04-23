@@ -27,6 +27,7 @@
 
             <ImageView
                 android:id="@+id/coin_icon"
+                load_image="@{String.valueOf(coin.id)}"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_marginStart="24dp"

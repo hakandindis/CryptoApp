@@ -21,10 +21,11 @@ class CoinAdapter(private val listener: ItemClickListener) :
         holder.bind(listener, currentList[position])
     }
 
-    inner class CoinViewHolder(binding: RowCoinRecyclerItemBinding) :
+    inner class CoinViewHolder(private val binding: RowCoinRecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(listener: ItemClickListener, coin: Coin) {
-
+            binding.coin = coin
+            binding.onItemClickListener = listener
         }
     }
 }
