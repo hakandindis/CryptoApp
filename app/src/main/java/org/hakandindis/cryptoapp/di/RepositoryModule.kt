@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.hakandindis.cryptoapp.data.remote.service.CoinService
+import org.hakandindis.cryptoapp.scene.detail.DetailRepository
 import org.hakandindis.cryptoapp.scene.home.HomeRepository
 import javax.inject.Singleton
 
@@ -15,4 +16,8 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideHomeRepository(coinService: CoinService) = HomeRepository(coinService)
+
+    @Singleton
+    @Provides
+    fun provideDetailRepository(coinService: CoinService) = DetailRepository(coinService)
 }
