@@ -11,7 +11,8 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(private val detailRepository: DetailRepository): BaseViewModel() {
+class DetailViewModel @Inject constructor(private val detailRepository: DetailRepository) :
+    BaseViewModel() {
 
     val detailResponse: MutableLiveData<DetailResponse?> = MutableLiveData()
 

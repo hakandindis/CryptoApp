@@ -3,7 +3,6 @@ package org.hakandindis.cryptoapp.scene.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import org.hakandindis.cryptoapp.base.BaseFragment
@@ -17,7 +16,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         CoinAdapter(object : ItemClickListener {
             override fun onItemClick(coin: Coin) {
                 if (coin.symbol != null) {
-                    val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(coin.symbol)
+                    val action =
+                        HomeFragmentDirections.actionHomeFragmentToDetailFragment(coin.symbol)
                     findNavController().navigate(action)
                 }
             }

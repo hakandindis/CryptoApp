@@ -1,7 +1,5 @@
 package org.hakandindis.cryptoapp.scene.detail
 
-import android.util.Log
-import org.hakandindis.cryptoapp.data.remote.model.detail.DetailResponse
 import org.hakandindis.cryptoapp.data.remote.service.CoinService
 import javax.inject.Inject
 
