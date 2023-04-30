@@ -19,7 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:onClick="@{() -> onItemClickListener.onItemClick(coin)}"
-        app:cardElevation="2dp">
+        app:cardElevation="2dp"
+        app:strokeWidth="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
