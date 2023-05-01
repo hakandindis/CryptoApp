@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:onClick="@{() -> onItemClickListener.onItemClick(coin)}"
+
         app:cardElevation="2dp"
         app:strokeWidth="0dp">
 
@@ -26,7 +26,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <androidx.constraintlayout.utils.widget.ImageFilterButton
+                android:onClick="@{() -> onItemClickListener.onSaveClick(coin)}"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/person"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
+                android:onClick="@{() -> onItemClickListener.onItemClick(coin)}"
                 android:id="@+id/coin_icon"
                 load_image="@{String.valueOf(coin.id)}"
                 android:layout_width="65dp"

@@ -1,11 +1,16 @@
 package org.hakandindis.cryptoapp.scene.home
 
 import android.util.Log
+import org.hakandindis.cryptoapp.data.local.dao.CoinDao
+import org.hakandindis.cryptoapp.data.local.model.coin.CoinEntity
 import org.hakandindis.cryptoapp.data.remote.model.coin.Coin
 import org.hakandindis.cryptoapp.data.remote.service.CoinService
 import javax.inject.Inject
 
-class HomeRepository @Inject constructor(private val coinService: CoinService) {
+class HomeRepository @Inject constructor(
+    private val coinService: CoinService,
+    private val coinDao: CoinDao
+) {
 
     suspend fun getLatestCoins(apiKey: String, limit: String): List<Coin?>? {
         try {
@@ -16,5 +21,18 @@ class HomeRepository @Inject constructor(private val coinService: CoinService) {
         }
         return emptyList()
     }
+
+    suspend fun insertCoin(coin: Coin) {
+        coinDao.insertCoin(
+            CoinEntity(
+                id = coin.id,
+                name = coin.name,
+                symbol = coin.symbol,
+                price = coin.quote?.uSD?.price
+            )
+        )
+    }
+
+    suspend fun getAllSavedCoins() = coinDao.getAllCoins()
 
 }

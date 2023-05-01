@@ -23,6 +23,15 @@ android {
 
         buildConfigField "String", "API_KEY", "\"61adf39a-df9c-4d36-8cc9-529dc29b725b\""
         buildConfigField "String", "BASE_IMAGE_URL", "\"https://s2.coinmarketcap.com/static/img/coins/128x128/\""
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true"
+                ]
+            }
+        }
     }
 
     buildTypes {
@@ -101,7 +110,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     // lottie animation
-    implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation "com.airbnb.android:lottie:$lottie_version"
     // viewpager2
     implementation "androidx.viewpager2:viewpager2:$view_pager_2_version"
     // paging3
@@ -109,7 +118,7 @@ dependencies {
     // glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
     // Coil
-    implementation "io.coil-kt:coil:2.2.2"
+    implementation "io.coil-kt:coil:$coil_version"
     // toast
     implementation "com.github.yagmurerdogan:Toastic:$toastic_version"
 }

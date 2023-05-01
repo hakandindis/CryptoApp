@@ -23,4 +23,9 @@
             android:name="symbol"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="org.hakandindis.cryptoapp.scene.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
