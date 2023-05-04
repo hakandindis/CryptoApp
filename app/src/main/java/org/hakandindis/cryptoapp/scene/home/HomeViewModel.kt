@@ -21,8 +21,8 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean> get() = _isLoading
 
-    private val _savedCoins : MutableLiveData<List<CoinEntity>?> = MutableLiveData()
-    val savedCoins : LiveData<List<CoinEntity>?> get() = _savedCoins
+    private val _savedCoins: MutableLiveData<List<CoinEntity>?> = MutableLiveData()
+    val savedCoins: LiveData<List<CoinEntity>?> get() = _savedCoins
 
 
     init {

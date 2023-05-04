@@ -16,7 +16,8 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideHomeRepository(coinService: CoinService, coinDao: CoinDao) = HomeRepository(coinService, coinDao)
+    fun provideHomeRepository(coinService: CoinService, coinDao: CoinDao) =
+        HomeRepository(coinService, coinDao)
 
     @Singleton
     @Provides
