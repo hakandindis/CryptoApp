@@ -13,15 +13,15 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
-
-    private val DATABASE_NAME = "crypto_database"
+    private const val DATABASE_NAME = "crypto_database"
 
     @Provides
     @Singleton
     fun provideRoomDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
-        context, CryptoDatabase::class.java, DATABASE_NAME
+        context = context,
+        klass = CryptoDatabase::class.java,
+        name = DATABASE_NAME
     ).build()
-
 
     @Provides
     @Singleton

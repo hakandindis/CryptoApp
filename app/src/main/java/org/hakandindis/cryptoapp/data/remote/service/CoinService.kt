@@ -8,18 +8,9 @@ import retrofit2.http.Query
 
 
 interface CoinService {
-    //https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest
-
-    //https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest
     @GET("/v1/cryptocurrency/listings/latest")
-    suspend fun getLatestCoins(
-        @Header("X-CMC_PRO_API_KEY") apiKey: String,
-        @Query("limit") limit: String
-    ): CoinResponse
+    suspend fun getLatestCoins(@Header("X-CMC_PRO_API_KEY") apiKey: String, @Query("limit") limit: String): CoinResponse
 
     @GET("/v2/cryptocurrency/info")
-    suspend fun getCoinInfo(
-        @Header("X-CMC_PRO_API_KEY") apiKey: String,
-        @Query("symbol") symbol: String
-    ): DetailResponse
+    suspend fun getCoinInfo(@Header("X-CMC_PRO_API_KEY") apiKey: String, @Query("symbol") symbol: String): DetailResponse
 }
