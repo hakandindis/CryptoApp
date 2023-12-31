@@ -1,4 +1,4 @@
-package org.hakandindis.cryptoapp.data.local.model.coin
+package org.hakandindis.cryptoapp.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

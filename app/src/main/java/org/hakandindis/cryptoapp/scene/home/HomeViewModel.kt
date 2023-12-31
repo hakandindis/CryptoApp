@@ -6,13 +6,14 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.hakandindis.cryptoapp.base.BaseViewModel
-import org.hakandindis.cryptoapp.data.local.model.coin.CoinEntity
+import org.hakandindis.cryptoapp.data.local.entity.CoinEntity
 import org.hakandindis.cryptoapp.data.remote.model.coin.Coin
+import org.hakandindis.cryptoapp.data.repository.HomeRepositoryImpl
 import org.hakandindis.cryptoapp.util.Constants
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository) :
+class HomeViewModel @Inject constructor(private val homeRepository: HomeRepositoryImpl) :
     BaseViewModel() {
 
     private var _coins: MutableLiveData<List<Coin?>?> = MutableLiveData()

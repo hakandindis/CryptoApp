@@ -1,4 +1,4 @@
-package org.hakandindis.cryptoapp
+package org.hakandindis.cryptoapp.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

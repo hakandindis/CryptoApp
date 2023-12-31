@@ -7,7 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import org.hakandindis.cryptoapp.data.local.db.CryptoDatabase
+import org.hakandindis.cryptoapp.data.db.CryptoDatabase
 import javax.inject.Singleton
 
 @Module

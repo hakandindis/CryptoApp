@@ -6,8 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.hakandindis.cryptoapp.data.local.dao.CoinDao
 import org.hakandindis.cryptoapp.data.remote.service.CoinService
-import org.hakandindis.cryptoapp.scene.detail.DetailRepository
-import org.hakandindis.cryptoapp.scene.home.HomeRepository
+import org.hakandindis.cryptoapp.data.repository.DetailRepositoryImpl
+import org.hakandindis.cryptoapp.data.repository.HomeRepositoryImpl
 import javax.inject.Singleton
 
 @Module
@@ -17,9 +17,9 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideHomeRepository(coinService: CoinService, coinDao: CoinDao) =
-        HomeRepository(coinService, coinDao)
+        HomeRepositoryImpl(coinService, coinDao)
 
     @Singleton
     @Provides
-    fun provideDetailRepository(coinService: CoinService) = DetailRepository(coinService)
+    fun provideDetailRepository(coinService: CoinService) = DetailRepositoryImpl(coinService)
 }
