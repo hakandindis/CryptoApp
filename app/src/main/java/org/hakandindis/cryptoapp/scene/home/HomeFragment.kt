@@ -46,10 +46,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun initializeObservers() {
         viewModel.coins.observe(viewLifecycleOwner) {
-            it?.let { coin ->
-                if (coin != null) {
-                    adapter.submitList(it)
-                }
+            it?.let { it ->
+                adapter.submitList(it)
             }
         }
 

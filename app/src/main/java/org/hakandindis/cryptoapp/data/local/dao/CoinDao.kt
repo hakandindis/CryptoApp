@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import org.hakandindis.cryptoapp.data.local.model.coin.CoinEntity
+import org.hakandindis.cryptoapp.data.local.entity.CoinEntity
 
 @Dao
 interface CoinDao {
