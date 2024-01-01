@@ -17,7 +17,6 @@ class DetailViewModel @Inject constructor(private val detailRepository: DetailRe
 
     val detailResponse: MutableLiveData<DetailResponse?> = MutableLiveData()
 
-
     fun getDetail(symbol: String) {
         viewModelScope.launch {
             detailResponse.value = detailRepository.getCoinDetail(Constants.API_KEY, symbol)

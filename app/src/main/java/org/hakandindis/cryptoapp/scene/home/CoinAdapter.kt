@@ -8,8 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import org.hakandindis.cryptoapp.data.remote.model.coin.Coin
 import org.hakandindis.cryptoapp.databinding.RowCoinRecyclerItemBinding
 
-class CoinAdapter(private val listener: ItemClickListener) :
-    ListAdapter<Coin, CoinAdapter.CoinViewHolder>(CoinDiffUtil) {
+class CoinAdapter(private val listener: ItemClickListener) : ListAdapter<Coin, CoinAdapter.CoinViewHolder>(DIFF_UTIL) {
+
+    companion object {
+        val DIFF_UTIL = object : DiffUtil.ItemCallback<Coin>() {
+            override fun areItemsTheSame(oldItem: Coin, newItem: Coin) = (oldItem.id == newItem.id)
+            override fun areContentsTheSame(oldItem: Coin, newItem: Coin) = (oldItem == newItem)
+
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -25,12 +32,7 @@ class CoinAdapter(private val listener: ItemClickListener) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(listener: ItemClickListener, coin: Coin) {
             binding.coin = coin
-            binding.onItemClickListener = listener
+            binding.root.setOnClickListener { listener.onItemClick(coin) }
         }
     }
-}
-
-object CoinDiffUtil : DiffUtil.ItemCallback<Coin>() {
-    override fun areItemsTheSame(oldItem: Coin, newItem: Coin) = (oldItem.id == newItem.id)
-    override fun areContentsTheSame(oldItem: Coin, newItem: Coin) = (oldItem == newItem)
 }
