@@ -15,8 +15,8 @@ class HomeViewModel @Inject constructor(
     private val getLatestCoinsUseCase: GetLatestCoinsUseCase
 ) : BaseViewModel() {
 
-    private var _coins: MutableLiveData<List<CoinItem>?> = MutableLiveData()
-    val coins: LiveData<List<CoinItem>?> get() = _coins
+    private var _coins: MutableLiveData<List<CoinItem>> = MutableLiveData()
+    val coins: LiveData<List<CoinItem>> get() = _coins
 
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean> get() = _isLoading

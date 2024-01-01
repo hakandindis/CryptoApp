@@ -2,6 +2,7 @@ package org.hakandindis.cryptoapp.scene.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +38,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun initializeObservers() {
         viewModel.coins.observe(viewLifecycleOwner) {
-            it?.let { adapter.submitList(it) }
+            if (it.isNotEmpty()) adapter.submitList(it)
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            binding.coinProgressBar.isVisible = it
         }
     }
 }
