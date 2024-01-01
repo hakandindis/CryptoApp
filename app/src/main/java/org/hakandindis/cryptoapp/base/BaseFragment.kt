@@ -11,10 +11,6 @@ abstract class BaseFragment<VB : ViewBinding>(private val bindingInflater: (infl
     private var _binding: VB? = null
     protected val binding: VB get() = _binding as VB
 
-    protected abstract fun initializeViews()
-    protected abstract fun initializeListeners()
-    protected abstract fun initializeObservers()
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = bindingInflater.invoke(inflater)
         return binding.root

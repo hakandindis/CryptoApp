@@ -7,7 +7,7 @@
         android:title="Home" />
 
     <item
-        android:id="@+id/profileFragment"
-        android:icon="@drawable/person"
-        android:title="Profile" />
+        android:id="@+id/favoriteCoinsFragment"
+        android:icon="@drawable/baseline_favorite_border_24"
+        android:title="Favorites" />
 </menu>

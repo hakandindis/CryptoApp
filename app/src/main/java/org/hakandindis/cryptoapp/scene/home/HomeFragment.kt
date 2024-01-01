@@ -30,15 +30,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         initializeObservers()
     }
 
-    override fun initializeViews() {
+    private fun initializeViews() {
         binding.coinList.adapter = this.adapter
         viewModel.getLatestCoins()
     }
 
-    override fun initializeListeners() {
+    private fun initializeListeners() {
     }
 
-    override fun initializeObservers() {
+    private fun initializeObservers() {
         viewModel.coins.observe(viewLifecycleOwner) {
             it?.let { adapter.submitList(it) }
         }
