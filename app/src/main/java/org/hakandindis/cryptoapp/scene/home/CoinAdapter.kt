@@ -5,16 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import org.hakandindis.cryptoapp.data.remote.model.coin.Coin
 import org.hakandindis.cryptoapp.databinding.RowCoinRecyclerItemBinding
 
-class CoinAdapter(private val listener: ItemClickListener) : ListAdapter<Coin, CoinAdapter.CoinViewHolder>(DIFF_UTIL) {
+class CoinAdapter(private val listener: (item: CoinItem) -> Unit) : ListAdapter<CoinItem, CoinAdapter.CoinViewHolder>(DIFF_UTIL) {
 
     companion object {
-        val DIFF_UTIL = object : DiffUtil.ItemCallback<Coin>() {
-            override fun areItemsTheSame(oldItem: Coin, newItem: Coin) = (oldItem.id == newItem.id)
-            override fun areContentsTheSame(oldItem: Coin, newItem: Coin) = (oldItem == newItem)
-
+        val DIFF_UTIL = object : DiffUtil.ItemCallback<CoinItem>() {
+            override fun areItemsTheSame(oldItem: CoinItem, newItem: CoinItem) = (oldItem.id == newItem.id)
+            override fun areContentsTheSame(oldItem: CoinItem, newItem: CoinItem) = (oldItem == newItem)
         }
     }
 
@@ -25,14 +23,14 @@ class CoinAdapter(private val listener: ItemClickListener) : ListAdapter<Coin, C
     }
 
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
-        holder.bind(listener, currentList[position])
+        holder.bind(currentList[position])
     }
 
     inner class CoinViewHolder(private val binding: RowCoinRecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(listener: ItemClickListener, coin: Coin) {
-            binding.coin = coin
-            binding.root.setOnClickListener { listener.onItemClick(coin) }
+        fun bind(item: CoinItem) {
+            binding.coin = item
+            binding.root.setOnClickListener { listener.invoke(item) }
         }
     }
 }

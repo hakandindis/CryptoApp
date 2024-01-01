@@ -15,13 +15,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         initializeObservers()
     }
 
-    override fun initializeViews() {
+    fun initializeViews() {
     }
 
-    override fun initializeListeners() {
+    fun initializeListeners() {
     }
 
-    override fun initializeObservers() {
+    fun initializeObservers() {
     }
 
 }

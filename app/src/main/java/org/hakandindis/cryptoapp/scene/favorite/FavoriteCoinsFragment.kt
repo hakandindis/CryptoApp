@@ -1,17 +1,18 @@
-package org.hakandindis.cryptoapp.scene.home
+package org.hakandindis.cryptoapp.scene.favorite
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import org.hakandindis.cryptoapp.base.BaseFragment
-import org.hakandindis.cryptoapp.databinding.FragmentHomeBinding
+import org.hakandindis.cryptoapp.databinding.FragmentFavoriteCoinsBinding
+import org.hakandindis.cryptoapp.scene.home.CoinAdapter
+import org.hakandindis.cryptoapp.scene.home.HomeFragmentDirections
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
-    private val viewModel by viewModels<HomeViewModel>()
+class FavoriteCoinsFragment : BaseFragment<FragmentFavoriteCoinsBinding>(FragmentFavoriteCoinsBinding::inflate) {
+    private val viewModel by viewModels<FavoriteCoinsViewModel>()
     private val adapter by lazy {
         CoinAdapter {
             it.symbol?.let { symbol ->
@@ -29,19 +30,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun initializeViews() {
-        binding.coinList.adapter = this.adapter
-        viewModel.getLatestCoins()
+        binding.favoriteCoinsRecyclerView.adapter = adapter
+        viewModel.getAllFavoriteCoins()
     }
 
-    private fun initializeListeners() {
-    }
-
+    private fun initializeListeners() {}
     private fun initializeObservers() {
-        viewModel.coins.observe(viewLifecycleOwner) {
+        viewModel.favoriteCoins.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) adapter.submitList(it)
-        }
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            binding.coinProgressBar.isVisible = it
         }
     }
 }

@@ -28,8 +28,8 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="org.hakandindis.cryptoapp.scene.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/favoriteCoinsFragment"
+        android:name="org.hakandindis.cryptoapp.scene.favorite.FavoriteCoinsFragment"
+        android:label="fragment_favorite_coins"
+        tools:layout="@layout/fragment_favorite_coins" />
 </navigation>

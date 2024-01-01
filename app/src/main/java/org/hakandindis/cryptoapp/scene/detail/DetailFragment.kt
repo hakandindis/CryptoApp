@@ -29,15 +29,15 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(
         initializeObservers()
     }
 
-    override fun initializeViews() {
+    private fun initializeViews() {
 
     }
 
-    override fun initializeListeners() {
+    private fun initializeListeners() {
         viewModel.getDetail(args.symbol)
     }
 
-    override fun initializeObservers() {
+    private fun initializeObservers() {
         viewModel.detailResponse.observe(viewLifecycleOwner) {
             if (it != null) parseData(it)
         }

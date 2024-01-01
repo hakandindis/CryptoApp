@@ -7,7 +7,7 @@
 
         <variable
             name="coin"
-            type="org.hakandindis.cryptoapp.data.remote.model.coin.Coin" />
+            type="org.hakandindis.cryptoapp.scene.home.CoinItem" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -74,7 +74,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="@{'$' + String.valueOf(coin.quote.USD.price)}"
+                android:text="@{'$' + String.valueOf(coin.price)}"
                 app:layout_constraintBottom_toBottomOf="@+id/coin_symbol"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/coin_name"

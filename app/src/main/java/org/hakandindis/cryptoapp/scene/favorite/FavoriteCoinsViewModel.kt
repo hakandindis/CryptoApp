@@ -1,4 +1,4 @@
-package org.hakandindis.cryptoapp.scene.home
+package org.hakandindis.cryptoapp.scene.favorite
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,30 +7,30 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.hakandindis.cryptoapp.base.BaseViewModel
 import org.hakandindis.cryptoapp.core.Result
-import org.hakandindis.cryptoapp.domain.usecase.home.GetLatestCoinsUseCase
+import org.hakandindis.cryptoapp.domain.usecase.favorite.GetAllFavoriteCoinsUseCase
+import org.hakandindis.cryptoapp.scene.home.CoinItem
 import javax.inject.Inject
 
+/**
+ * CREATED BY HAKAN DINDIŞ on 1.01.2024
+ */
 @HiltViewModel
-class HomeViewModel @Inject constructor(
-    private val getLatestCoinsUseCase: GetLatestCoinsUseCase
+class FavoriteCoinsViewModel @Inject constructor(
+    private val getAllFavoriteCoinsUseCase: GetAllFavoriteCoinsUseCase
 ) : BaseViewModel() {
 
-    private var _coins: MutableLiveData<List<CoinItem>> = MutableLiveData()
-    val coins: LiveData<List<CoinItem>> get() = _coins
+    private val _favoriteCoins: MutableLiveData<List<CoinItem>> = MutableLiveData()
+    val favoriteCoins: LiveData<List<CoinItem>> get() = _favoriteCoins
 
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean> get() = _isLoading
 
-    init {
-        _isLoading.value = false
-    }
-
-    fun getLatestCoins() = viewModelScope.launch {
+    fun getAllFavoriteCoins() = viewModelScope.launch {
         _isLoading.value = true
-        when (val result = getLatestCoinsUseCase()) {
+        when (val result = getAllFavoriteCoinsUseCase()) {
             is Result.Success -> {
                 _isLoading.value = false
-                _coins.value = result.data
+                _favoriteCoins.value = result.data
             }
 
             is Result.Failure -> {

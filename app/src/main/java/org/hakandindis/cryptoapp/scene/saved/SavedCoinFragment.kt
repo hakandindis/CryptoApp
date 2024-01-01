@@ -16,14 +16,14 @@ class SavedCoinFragment :
         initializeObservers()
     }
 
-    override fun initializeViews() {
+    fun initializeViews() {
 
     }
 
-    override fun initializeListeners() {
+    fun initializeListeners() {
     }
 
-    override fun initializeObservers() {
+    fun initializeObservers() {
     }
 
 }
