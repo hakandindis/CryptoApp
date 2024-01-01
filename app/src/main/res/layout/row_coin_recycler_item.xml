@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="onItemClickListener"
-            type="org.hakandindis.cryptoapp.scene.home.ItemClickListener" />
-
-        <variable
             name="coin"
             type="org.hakandindis.cryptoapp.data.remote.model.coin.Coin" />
     </data>
@@ -26,14 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:onClick="@{() -> onItemClickListener.onSaveClick(coin)}"
-                android:src="@drawable/person"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <ImageView
                 android:id="@+id/coin_icon"
                 load_image="@{String.valueOf(coin.id)}"
@@ -43,7 +31,6 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
                 android:contentDescription="coin icon"
-                android:onClick="@{() -> onItemClickListener.onItemClick(coin)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

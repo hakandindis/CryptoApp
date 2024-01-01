@@ -6,15 +6,15 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.hakandindis.cryptoapp.base.BaseViewModel
-import org.hakandindis.cryptoapp.data.local.entity.CoinEntity
+import org.hakandindis.cryptoapp.core.Result
 import org.hakandindis.cryptoapp.data.remote.model.coin.Coin
-import org.hakandindis.cryptoapp.data.repository.HomeRepositoryImpl
-import org.hakandindis.cryptoapp.util.Constants
+import org.hakandindis.cryptoapp.domain.usecase.home.GetLatestCoinsUseCase
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val homeRepository: HomeRepositoryImpl) :
-    BaseViewModel() {
+class HomeViewModel @Inject constructor(
+    private val getLatestCoinsUseCase: GetLatestCoinsUseCase
+) : BaseViewModel() {
 
     private var _coins: MutableLiveData<List<Coin?>?> = MutableLiveData()
     val coins: LiveData<List<Coin?>?> get() = _coins
@@ -22,25 +22,22 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean> get() = _isLoading
 
-    private val _savedCoins: MutableLiveData<List<CoinEntity>?> = MutableLiveData()
-    val savedCoins: LiveData<List<CoinEntity>?> get() = _savedCoins
-
 
     init {
         _isLoading.value = false
     }
 
-    fun getLatestCoins() {
+    fun getLatestCoins() = viewModelScope.launch {
         _isLoading.value = true
-        viewModelScope.launch(coroutineContext) {
-            _coins.value = homeRepository.getLatestCoins(Constants.API_KEY, Constants.LIMIT)
-        }
-    }
+        when (val result = getLatestCoinsUseCase()) {
+            is Result.Success -> {
+                _isLoading.value = false
+                _coins.value = result.data
+            }
 
-    fun insertCoin(coin: Coin) {
-        viewModelScope.launch(coroutineContext) {
-            homeRepository.insertCoin(coin)
-            _savedCoins.value = homeRepository.getAllSavedCoins()
+            is Result.Failure -> {
+                _isLoading.value = false
+            }
         }
     }
 }
